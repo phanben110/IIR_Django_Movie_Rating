@@ -1,0 +1,89 @@
+<!-- ratings/templates/ratings/rating_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ratings List</title>
+    <style>
+        /* Add CSS styles for the table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        /* Style the Edit and Delete links as buttons */
+        .action-links {
+            text-align: center;
+        }
+        
+        .edit-link, .delete-link {
+            display: inline-block;
+            padding: 6px 12px;
+            margin: 2px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .delete-link {
+            background-color: #DC3545;
+        }
+
+        /* Center-align the heading */
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ratings List</h1>
+    
+    {% if ratings %}
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Movie</th>
+                    <th>Rating</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rating in ratings %}
+                    <tr>
+                        <td>{{ rating.user_id.user_name }}</td>
+                        <td>{{ rating.movie_id.movie_name }}</td>
+                        <td>{{ rating.rating }}</td>
+                        <td class="action-links">
+                            <a href="{% url 'update_rating' rating.pk %}" class="edit-link">Edit</a>
+                            <a href="{% url 'delete_rating' rating.pk %}" class="delete-link">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No ratings available.</p>
+    {% endif %}
+    <a href="{% url 'create_rating' %}" class="edit-link">Add Rating</a>
+    <a href="{% url 'create_user' %}" class="edit-link">Add User</a>
+    <a href="{% url 'create_movie' %}" class="edit-link">Add Movie</a>
+</body>
+</html>

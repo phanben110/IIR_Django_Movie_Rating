@@ -1,0 +1,81 @@
+<!-- ratings/templates/ratings/user_form.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add User</title>
+    <style>
+        /* Add CSS styles for the form */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Center-align the button */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="text"], button[type="submit"] {
+            width: 100%; /* Set both input fields to 100% width */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        button[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add User</h1>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{ form.user_name.id_for_label }}">User Name:</label>
+                {{ form.user_name }}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.user_age.id_for_label }}">User Age:</label>
+                {{ form.user_age }}
+            </div>
+            
+            <!-- Center-align the button -->
+            <div class="button-container">
+                <button type="submit">Save User</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

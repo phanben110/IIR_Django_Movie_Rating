@@ -1,0 +1,78 @@
+<!-- ratings/templates/ratings/movie_form.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Movie</title>
+    <style>
+        /* Add CSS styles for the form */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        /* Center-align the button */
+        .button-container {
+            text-align: center;
+        }
+
+        button[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Movie</h1>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.movie_name.id_for_label }}">Movie Name:</label>
+                {{ form.movie_name }}
+            </div>
+            <!-- Center-align the button -->
+            <div class="button-container">
+                <button type="submit">Save Movie</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
